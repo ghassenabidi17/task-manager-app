@@ -437,6 +437,21 @@ class TaskResourceIT {
         assertDecrementedRepositoryCount(databaseSizeBeforeDelete);
     }
 
+    @Test
+    @Transactional
+    @WithMockUser
+    void getTasksByStatus() throws Exception {
+        // 1. Save a task with TODO status
+        task.setStatus(TaskStatus.TODO);
+        insertedTask = taskRepository.saveAndFlush(task);
+
+        // 2. Call your custom endpoint
+        restTaskMockMvc
+            .perform(get("/api/tasks/by-status/TODO").accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$[*].title").value(hasItem(task.getTitle())));
+    }
+
     protected long getRepositoryCount() {
         return taskRepository.count();
     }
