@@ -68,7 +68,11 @@ export class TaskService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
-
+  getTasksByStatus(status: string): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<RestTask[]>(`${this.resourceUrl}/by-status/${status}`, { observe: 'response' })
+      .pipe(map(res => this.convertResponseArrayFromServer(res)));
+  }
   getTaskIdentifier(task: Pick<ITask, 'id'>): number {
     return task.id;
   }
@@ -121,11 +125,5 @@ export class TaskService {
     return res.clone({
       body: res.body ? res.body.map(item => this.convertDateFromServer(item)) : null,
     });
-  }
-
-  getTasksByStatus(status: string): Observable<EntityArrayResponseType> {
-    return this.http
-      .get<RestTask[]>(`${this.resourceUrl}/by-status/${status}`, { observe: 'response' })
-      .pipe(map(res => this.convertResponseArrayFromServer(res)));
   }
 }
