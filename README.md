@@ -2,6 +2,12 @@
 
 A full-stack task management application built with **JHipster**, **Spring Boot**, and **Angular**.
 
+🌐 **Live Demo**: [https://task-manager-app-production-4699.up.railway.app](https://task-manager-app-production-4699.up.railway.app)
+
+> Login with: `admin` / `admin`
+
+---
+
 ## 🚀 Tech Stack
 
 | Layer           | Technology               |
@@ -14,6 +20,7 @@ A full-stack task management application built with **JHipster**, **Spring Boot*
 | DB Migrations   | Liquibase                |
 | API Docs        | Swagger / OpenAPI 3.1    |
 | Scaffolding     | JHipster 8               |
+| Deployment      | Railway                  |
 
 ---
 
@@ -28,6 +35,7 @@ A full-stack task management application built with **JHipster**, **Spring Boot*
 - ✅ Admin dashboard — user management, logs, API docs
 - ✅ Pagination on task list
 - ✅ Swagger UI for API exploration
+- ✅ Deployed on Railway with PostgreSQL
 
 ---
 
@@ -90,6 +98,49 @@ Custom Angular component that fetches tasks grouped by status and displays them 
 
 ---
 
+## 🧪 Testing
+
+The project includes both backend and frontend tests covering the custom logic added beyond JHipster's generated code.
+
+### Backend Tests (Spring Boot)
+
+Tests are located in `src/test/java/` and use **JUnit 5** + **Spring Boot Test**.
+
+| Test                  | What it covers                                                       |
+| --------------------- | -------------------------------------------------------------------- |
+| `TaskResourceIT.java` | Integration test for all CRUD endpoints                              |
+| Custom endpoint test  | `GET /api/tasks/by-status/{status}` returns correct filtered results |
+
+**Run backend tests:**
+
+```bash
+./mvnw test
+# Windows CMD: mvnw test
+```
+
+### Frontend Tests (Angular)
+
+Tests are located alongside components in `src/main/webapp/app/` and use **Jest**.
+
+| Test                             | What it covers                                |
+| -------------------------------- | --------------------------------------------- |
+| `task.service.spec.ts`           | HTTP calls including `getTasksByStatus()`     |
+| `kanban-board.component.spec.ts` | Component rendering and column grouping logic |
+
+**Run frontend tests:**
+
+```bash
+npm test
+```
+
+**Run all tests (backend + frontend):**
+
+```bash
+./mvnw verify
+```
+
+---
+
 ## 🛠 How to Run Locally
 
 ### Prerequisites
@@ -133,6 +184,19 @@ Frontend runs at: `http://localhost:9000`
 
 ---
 
+## ☁️ Deployment
+
+The application is deployed on **Railway** with the following services:
+
+- **App** — Spring Boot backend serving the Angular frontend
+- **PostgreSQL** — managed database provisioned by Railway
+
+The production profile activates PostgreSQL automatically via `SPRING_PROFILES_ACTIVE=prod`.
+
+Live URL: [https://task-manager-app-production-4699.up.railway.app](https://task-manager-app-production-4699.up.railway.app)
+
+---
+
 ## 📡 API Endpoints
 
 | Method   | URL                             | Description                   |
@@ -145,7 +209,10 @@ Frontend runs at: `http://localhost:9000`
 | `DELETE` | `/api/tasks/{id}`               | Delete task                   |
 | `GET`    | `/api/tasks/by-status/{status}` | **Custom** — filter by status |
 
-Full API docs available at: `http://localhost:8080/swagger-ui/index.html`
+Full API docs available at:
+
+- Local: `http://localhost:8080/swagger-ui/index.html`
+- Production: `https://task-manager-app-production-4699.up.railway.app/swagger-ui/index.html`
 
 ---
 
