@@ -1,0 +1,35 @@
+<div class="kanban-board">
+  <h2>Task Board</h2>
+
+  <div class="kanban-columns">
+    <!-- TODO Column -->
+    <div class="kanban-column todo">
+      <h3>📌 Todo ({{ todoTasks.length }})</h3>
+      <div class="kanban-card" *ngFor="let task of todoTasks">
+        <strong>{{ task.title }}</strong>
+        <p *ngIf="task.dueDate">📅 {{ task.dueDate }}</p>
+        <p *ngIf="task.priority">⚡ Priority: {{ task.priority }}</p>
+      </div>
+    </div>
+
+    <!-- IN PROGRESS Column -->
+    <div class="kanban-column in-progress">
+      <h3>⚡ In Progress ({{ inProgressTasks.length }})</h3>
+      <div class="kanban-card" *ngFor="let task of inProgressTasks">
+        <strong>{{ task.title }}</strong>
+        <p *ngIf="task.dueDate">📅 {{ task.dueDate }}</p>
+        <p *ngIf="task.priority">⚡ Priority: {{ task.priority }}</p>
+      </div>
+    </div>
+
+    <!-- DONE Column -->
+    <div class="kanban-column done">
+      <h3>✅ Done ({{ doneTasks.length }})</h3>
+      <div class="kanban-card" *ngFor="let task of doneTasks">
+        <strong>{{ task.title }}</strong>
+        <p *ngIf="task.dueDate">📅 {{ task.dueDate }}</p>
+        <p *ngIf="task.priority">⚡ Priority: {{ task.priority }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+id;title;description;status;due_date;priority
+1;which ha athwart;../fake-data/blob/hipster.txt;DONE;2026-02-12;2
+2;fooey hover unblinking;../fake-data/blob/hipster.txt;DONE;2026-02-13;2
+3;unless;../fake-data/blob/hipster.txt;IN_PROGRESS;2026-02-13;5
+4;upbeat;../fake-data/blob/hipster.txt;IN_PROGRESS;2026-02-13;1
+5;meaningfully;../fake-data/blob/hipster.txt;DONE;2026-02-13;2
+6;often furthermore;../fake-data/blob/hipster.txt;DONE;2026-02-13;2
+7;upliftingly worth meanwhile;../fake-data/blob/hipster.txt;IN_PROGRESS;2026-02-12;1
+8;birdbath;../fake-data/blob/hipster.txt;IN_PROGRESS;2026-02-13;1
+9;hmph;../fake-data/blob/hipster.txt;TODO;2026-02-12;2
+10;indeed unit;../fake-data/blob/hipster.txt;DONE;2026-02-12;2

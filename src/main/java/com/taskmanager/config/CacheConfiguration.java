@@ -50,6 +50,8 @@ public class CacheConfiguration {
             createCache(cm, com.taskmanager.domain.User.class.getName());
             createCache(cm, com.taskmanager.domain.Authority.class.getName());
             createCache(cm, com.taskmanager.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.taskmanager.domain.Task.class.getName());
+            createCache(cm, com.taskmanager.domain.Task.class.getName() + ".status");
             // jhipster-needle-ehcache-add-entry
         };
     }

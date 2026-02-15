@@ -1,0 +1,15 @@
+enum TaskStatus {
+    TODO,
+    IN_PROGRESS,
+    DONE
+}
+
+entity Task {
+    title       String      required minlength(2) maxlength(100)
+    description TextBlob
+    status      TaskStatus  required
+    dueDate     LocalDate
+    priority    Integer     min(1) max(5)
+}
+
+pagination Task with pagination
